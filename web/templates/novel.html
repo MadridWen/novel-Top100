@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../static/css/meanmenu.css">
+
+    <link rel="stylesheet" href="../static/css/boxicons.min.css">
+
+    <link rel="stylesheet" href="../static/css/odometer.min.css">
+
+    <link rel="stylesheet" href="../static/css/magnific-popup.min.css">
+
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../static/css/nice-select.min.css">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <title>小说列表</title>
+</head>
+<body>
+
+<div class="loader">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="navbar-area two fixed-top">
+
+    <div class="mobile-nav">
+        <a href="/" class="logo">
+            <img src="../static/picture/logo.png" alt="Logo">
+        </a>
+    </div>
+
+    <div class="main-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="/">
+                    <img src="../static/picture/logo.png" alt="Logo">
+                </a>
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/index" class="nav-link dropdown-toggle active">主页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" class="nav-link dropdown-toggle">小说Top250</a>
+                        <li class="nav-item">
+                            <a href="/wordcloud" class="nav-link dropdown-toggle">小说词云</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/team" class="nav-link dropdown-toggle">我的团队</a>
+                        </li>
+                    </ul>
+                    <div class="side-nav">
+                        <a href="#">登录</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- table表格显示-start -->
+<section class="review-area two ptb-100">
+    <div class="review-shape">
+        <img src="static/picture/banner-shape6.png" alt="Shape">
+    </div>
+    <div class="section-title">
+        <h2>小说Top100</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr style="height:150px">
+                        <th>小说书名</th>
+                        <th>小说简介</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for novel in novels %}
+                        <tr>
+                            <td>{{ novel[0] }}</td>
+                            <td>{{ novel[1] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+        <div class="pagination-area">
+            <ul>
+                <li>
+                    <a href="#">Prev</a>
+                </li>
+                <li>
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- table表格显示-end -->
+
+
+<footer class="pt-70">
+    <div class="container">
+        <div class="copyright-area">
+            <p>
+                Copyright &copy; 2022.Company Harbin University All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<script data-cfasync="false" src="../static/js/email-decode.min.js"></script>
+<script src="../static/js/jquery-3.5.1.min.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+
+<script src="../static/js/form-validator.min.js"></script>
+
+<script src="../static/js/contact-form-script.js"></script>
+
+<script src="../static/js/jquery.ajaxchimp.min.js"></script>
+
+<script src="../static/js/jquery.meanmenu.js"></script>
+
+<script src="../static/js/odometer.min.js"></script>
+<script src="../static/js/jquery.appear.js"></script>
+
+<script src="../static/js/jquery.magnific-popup.min.js"></script>
+
+<script src="../static/js/owl.carousel.min.js"></script>
+
+<script src="../static/js/jquery.nice-select.min.js"></script>
+
+<script src="../static/js/thumb-slide.js"></script>
+
+<script src="../static/js/custom.js"></script>
+</body>
+</html>
