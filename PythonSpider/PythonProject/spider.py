@@ -190,14 +190,16 @@ def create_team_table(c_path):
     sql_cur = sql_lite.cursor()
     sql_cur.execute(creatQeSql)
     sql_lite.commit()
-    menber_list = [
-        ['"1"','"示例成员甲"','"男"','"18"','"示例班级"','"组长"','"/static/picture/demo-avatar.svg"'],
-        ['"2"','"示例成员乙"','"男"','"18"','"示例班级"','"组员"','"/static/picture/demo-avatar.svg"'],
-        ['"3"','"示例成员丙"','"女"','"18"','"示例班级"','"组员"','"/static/picture/demo-avatar.svg"'],
-        ]
-    for menber_item in menber_list:
-        insert_sql = f'insert into team(id,name,gender,age,class,identity,imgurl) values({",".join(menber_item)})'
-        sql_cur.execute(insert_sql)
+    # 以下均为虚构演示信息，不对应真实学生或成员。
+    member_list = [
+        (1, '示例成员甲', '未设定', '虚构', '示例班级', '组长', '/static/picture/demo-avatar.svg'),
+        (2, '示例成员乙', '未设定', '虚构', '示例班级', '组员', '/static/picture/demo-avatar.svg'),
+        (3, '示例成员丙', '未设定', '虚构', '示例班级', '组员', '/static/picture/demo-avatar.svg'),
+    ]
+    sql_cur.executemany(
+        'insert into team(id,name,gender,age,class,identity,imgurl) values(?,?,?,?,?,?,?)',
+        member_list,
+    )
     sql_lite.commit()
     sql_cur.close()
     sql_lite.close()

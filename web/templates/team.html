@@ -82,17 +82,18 @@
 <section class="team-area pt-100 pb-70">
     <div class="container">
         <div class="section-title">
-            <h2>开 发 团 队</h2>
+            <h2>演 示 团 队</h2>
+            <p>以下姓名、编号及其他成员资料均为虚构，仅用于页面演示。</p>
         </div>
         <div class="row">
             {% for team in myTeam %}
             <div class="col-sm-6 col-lg-4" style="margin-top: 200px; text-align: left;">
                 <div class="team-item">
                     <div class="team-top">
-                        <img src="{{team[6]}}" alt="Team">
+                        <img src="{{team[6]}}" alt="虚构成员占位头像">
                     </div>
                     <h3>{{team[1]}}</h3>
-                    <span>学号：{{team[0]}}</span>
+                    <span>示例编号：{{team[0]}}</span>
                     <span>年龄：{{team[3]}}</span>
                     <span>性别：{{team[2]}}</span>
                     <span>组内身份：{{team[5]}}</span>

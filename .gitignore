@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+*.db-journal
+*.db-wal
+*.db-shm
+/web/static/picture/img_hend_*.jpg
