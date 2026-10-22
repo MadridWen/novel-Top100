@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../static/css/meanmenu.css">
+
+    <link rel="stylesheet" href="../static/css/boxicons.min.css">
+
+    <link rel="stylesheet" href="../static/css/odometer.min.css">
+
+    <link rel="stylesheet" href="../static/css/magnific-popup.min.css">
+
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="../static/css/nice-select.min.css">
+
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <title>评分页面</title>
+</head>
+<body>
+
+<div class="loader">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="navbar-area two fixed-top">
+
+    <div class="mobile-nav">
+        <a href="/" class="logo">
+            <img src="../static/picture/logo.png" alt="Logo">
+        </a>
+    </div>
+
+    <div class="main-nav">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-light">
+                <a class="navbar-brand" href="/">
+                    <img src="../static/picture/logo.png" alt="Logo">
+                </a>
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="/" class="nav-link dropdown-toggle active">主页</a>
+                        </li>
+                        <li class="nav-item">
+                            {#a标签中href对应的是app.py中的装饰器中的/movie参数#}
+                            <a href="/movie" class="nav-link dropdown-toggle">电影Top250</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/score" class="nav-link">评分图表</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/wordcloud" class="nav-link dropdown-toggle">电影词云</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/team" class="nav-link dropdown-toggle">我的团队</a>
+                        </li>
+                    </ul>
+                    <div class="side-nav">
+                        <a href="#">Book A Schedule</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<section class="service-area three pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <h2>豆瓣电影Top250-评分分析图</h2>
+        </div>
+        <div class="row">
+            {#图表的位置#}
+            <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+            <div id="main" style="width: 1500px;height:600px;"></div>
+
+
+        </div>
+    </div>
+</section>
+
+
+<footer class="pt-70">
+    <div class="container">
+        <div class="copyright-area">
+            <p>
+                Copyright &copy; 2022.Company name All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<script data-cfasync="false" src="../static/js/email-decode.min.js"></script>
+<script src="../static/js/jquery-3.5.1.min.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+
+<script src="../static/js/form-validator.min.js"></script>
+
+<script src="../static/js/contact-form-script.js"></script>
+
+<script src="../static/js/jquery.ajaxchimp.min.js"></script>
+
+<script src="../static/js/jquery.meanmenu.js"></script>
+
+<script src="../static/js/odometer.min.js"></script>
+<script src="../static/js/jquery.appear.js"></script>
+
+<script src="../static/js/jquery.magnific-popup.min.js"></script>
+
+<script src="../static/js/owl.carousel.min.js"></script>
+
+<script src="../static/js/jquery.nice-select.min.js"></script>
+
+<script src="../static/js/thumb-slide.js"></script>
+
+<script src="../static/js/custom.js"></script>
+{#引入echarts.min.js文件#}
+<script src="../static/js/echarts.min.js"></script>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '电影评分',
+            subtext: '每一级评分的电影数量'
+        },
+        tooltip: {},
+        legend: {
+            data: ['电影数量']
+        },
+        xAxis: {
+            data: {{ scores|tojson }}{#scores是从后端app.py里面获取到的分数集合 tojson是把分数转换成json格式#}
+        },
+        yAxis: {},
+        series: [
+            {
+                name: '电影数量',
+                type: 'bar',
+                label: {
+                    show: true,
+                    position: 'inside'
+                },
+                data: {{ movieNum }}
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
